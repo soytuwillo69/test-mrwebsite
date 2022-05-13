@@ -41,12 +41,17 @@
 </body>
 
 <script>
-  let randomNumber = Math.random() * 10;
+  //Numero entero de 1 a 100
+  //Variable global
+  var randomNumber = parseInt(1 + Math.random() * 100);
+  console.log(randomNumber);
 
-  const ATTEMPS = 5;
+  //10 intentos
+  const ATTEMPS = 10;
   const guesses = document.querySelector('.guesses');
   const lastResult = document.querySelector('.lastResult');
-  const lowOrHi = document.querySelector('lowOrHi');
+  //.lowOrHi
+  const lowOrHi = document.querySelector('.lowOrHi');
   const guessSubmit = document.querySelector('.guessSubmit');
   const guessField = document.querySelector('.guessField');
 
@@ -55,36 +60,53 @@
 
   function checkGuess() {
 
-    let userGuess = guessField.value;
-    if(guessCount === 1) {
-      guesses.textContent = 'Número aleatorio anterior: ';
-    }
-    guesses.textContent += userGuess + ' ';
+    //Validación de datos.
+    var error = ""     
+    if(guessField.value % 1 != 0) error += "Debe introducir un numero entero\n";
+    if(isNaN(guessField.value)) error += "Debe introducir un numero";        
 
-    if(userGuess === randomNumber) {
-      lastResult.textContent = '!!!Pérdistes!!!';
-      lastResult.style.backgroundColor = 'black';
-      lowOrHi.textContent = '';
-      setGameOver();
-    } else if(guessCount === ATTEMPS) {
-      lastResult.textContent = 'Felicitaciones! adivinaste el número!';
-      lastResult.style.backgroundColor = 'red';
-      setGameOver();
-    } else {
-      lastResult.textContent = 'Incorrecto! ';
-      lastResult.style.backgroundColor = 'green';
-      if(userGuess < randomNumber) {
-        lowOrHi.textContent = 'El número es mayor!';
-      } else if(userGuess > randomNumber) {
-        lowOrHi.textContent = 'El número es menor!';
+    //Convirtiendo a numero entero
+    let userGuess = parseInt(guessField.value);
+          
+    //Alerta de error de entrada de datos.
+    if(error){
+      alert(error);
+    }else{    
+      if(guessCount === 1) {
+        guesses.textContent = 'Número aleatorio anterior: ';
       }
-    }
+      guesses.textContent += userGuess + ' ';
+      // Cambio de condiciones de los if.
+      if(guessCount === ATTEMPS) {
+        lastResult.textContent = '!!!Pérdistes!!!';      
+        //Cambio de color de black a red
+        lastResult.style.backgroundColor = 'red';
+        lowOrHi.textContent = '';
+        setGameOver();
+      } else if(userGuess === randomNumber) {
+        lastResult.textContent = 'Felicitaciones! adivinaste el número!';      
+        //Cambio de color de red a green
+        lastResult.style.backgroundColor = 'green';
+        setGameOver();
+      } else {      
+        lastResult.textContent = 'Incorrecto! ';            
+        //Cambio de color de green a black    
+        lastResult.style.backgroundColor = 'black';       
+        if(userGuess < randomNumber) {        
+          lowOrHi.textContent = 'El número es mayor!';                        
+        } else if(userGuess > randomNumber) {
+          lowOrHi.textContent = 'El número es menor!';        
+        }
+      }
 
-    guessCount++;
-    guessField.value = '';
-    guessField.focus();
+      guessCount++;
+      guessField.value = '';
+      guessField.focus();
+    }
   }
-  guessSubmit.addeventListener('click', checkGuess);
+  //addEventListener
+  guessSubmit.addEventListener('click', checkGuess);
+  
 
   function setGameOver() {
 	  guessField.disabled = true;
@@ -92,7 +114,7 @@
 	  resetButton = document.createElement('button');
 	  resetButton.textContent = 'Comienza un nuevo juego';
 	  document.body.appendChild(resetButton);
-	  resetButton.addeventListener('click', resetGame);
+	  resetButton.addEventListener('click', resetGame);
   }
 
   function resetGame() {
@@ -111,7 +133,9 @@
 
 	  lastResult.style.backgroundColor = 'white';
 
-	  randomNumber = Math.floor(Math.random()) + 1;
+    //Nueva asignación de valor aleatorio
+	  randomNumber = parseInt(1 + Math.random() * 100);
+    console.log(randomNumber)
   }
 </script>
 </html>
