@@ -1,0 +1,11 @@
+se usara '='  para indicar solucion.
+
+Método "addEventListener" estaba escrito mal de esta forma "addeventListener" = cambiar la 'e' por la 'E'.
+
+variable lowOrHi no tenia en el querySelector el . = se le agregó.
+
+la variable guessField no se convertia a número = se convirtió con Number.
+
+Las condiciones para evaluar si se ganaba o perdia estaban cruzadas = intercambié los valores y listo.
+
+Se agregó en un condicional un rango entre 1 y 100 para evitar valores mayores.
