@@ -21,11 +21,41 @@ const ATTEMPS = 5;
 // Ahora
 const ATTEMPS = 10;
 ```
-## `4.` El input permitía ingresar también letras.
-Se pretende que el usuario digite un número entero del 1 al 100, pero también se debe validar que lo que se ingresa el usuario es un número como tal, entonces cambié el tipo del input de `text` a `number`.
+
+## `4.` Se utilizaba incorrectamente el método `addEventListener()`
+Era simplemente un error de escritura, hice el cambio correspondiente.
+```javascript
+// Antes
+guessSubmit.addeventListener('click', checkGuess);
+// Ahora
+guessSubmit.addEventListener('click', checkGuess);
+```
+
+## `5.` El input permitía ingresar también letras.
+Se pretende que el usuario digite un número entero del 1 al 100, pero también se debe validar que el usuario digite un número como tal, entonces cambié el tipo del input de `text` a `number`. También agregué propiedades para que a nivel de HTML se haga esa validación.
 ```html
 <!-- Antes -->
 <input type="number" id="guessField" class="guessField">
 <!-- Ahora -->
-<input type="number" id="guessField" class="guessField">
+<input type="number" id="guessField" class="guessField" min="1" max="100">
 ```
+
+## `6.` A nivel de JavaScript, NO se validaba el número ingresado por el usuario.
+Dentro de la función `checkGuess`, antes de hacer el resto de lógica necesaria, primero validé que sea un número entero comprendido del 1 al 100 a través de la siguiente función.
+```javascript
+function isValidNumber(userGuess){
+    return userGuess >= 1 && userGuess <= 100;
+}
+```
+Esta validación fue importante ya que si no se cumplía la condición, tampoco se debía de incrementar el intento del usuario, mostrando únicamente una alerta.
+```javascript
+function checkGuess() {
+    let userGuess = guessField.value; // Se obtiene el valor del numero ingresador por el usuario
+    // Si es un numero válido, se hacen las consideraciones correspondientes
+    if(isValidNumber(userGuess)){
+        guessCount++;
+        // resto de código a validar
+    }
+    alert('Debes ingresar un número válido comprendido del 1 al 100');
+```
+

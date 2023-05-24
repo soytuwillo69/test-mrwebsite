@@ -1,27 +1,29 @@
-// Se genera el numero random de 1 a 100.
-let randomNumber = Math.floor(Math.random() * 100) + 1;
-console.log(randomNumber);
-
-const ATTEMPS = 10;
-console.log(ATTEMPS);
-
+let randomNumber = Math.floor(Math.random() * 100) + 1; // Numero entero aleatorio del 1 al 100
+const ATTEMPS = 10; // Intentos permitidos
+const guessField = document.querySelector('.guessField'); // Numero digitado por el usuario
+const guessSubmit = document.querySelector('.guessSubmit'); // Btn para validar el numero ingresado
+// Elementos para mostrar alertas/información
 const guesses = document.querySelector('.guesses');
 const lastResult = document.querySelector('.lastResult');
 const lowOrHi = document.querySelector('lowOrHi');
-const guessSubmit = document.querySelector('.guessSubmit');
-const guessField = document.querySelector('.guessField');
-
-let guessCount = 1;
+// Variables para validar condiciones
+let guessCount = 0;
 let resetButton;
 
+guessSubmit.addEventListener('click', checkGuess);
+
 function checkGuess() {
+    let userGuess = guessField.value; // Se obtiene el valor del numero ingresador por el usuario
+    // Si es un numero válido, se hacen las consideraciones correspondientes
+    if(isValidNumber(userGuess)){
+        guessCount++;
 
-    let userGuess = guessField.value;
-    if (guessCount === 1) {
-        guesses.textContent = 'Número aleatorio anterior: ';
     }
-    guesses.textContent += userGuess + ' ';
-
+    alert('Debes ingresar un número válido comprendido del 1 al 100');
+    
+    /*
+    showPreviousNumber(userGuess);
+    
     if (userGuess === randomNumber) {
         lastResult.textContent = '!!!Pérdistes!!!';
         lastResult.style.backgroundColor = 'black';
@@ -43,9 +45,20 @@ function checkGuess() {
 
     guessCount++;
     guessField.value = '';
-    guessField.focus();
+    guessField.focus();*/
 }
-guessSubmit.addeventListener('click', checkGuess);
+
+// Valida si lo que digita el usuario es un numero entero del 1 al 100
+function isValidNumber(userGuess){
+    return userGuess >= 1 && userGuess <= 100;
+}
+
+function showPreviousNumber(userGuess){
+    if (guessCount === 1) {
+        guesses.textContent = 'Número aleatorio anterior: ';
+    }
+    guesses.textContent += userGuess + ' ';
+}
 
 function setGameOver() {
     guessField.disabled = true;
