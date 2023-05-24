@@ -12,3 +12,12 @@ let randomNumber = Math.random() * 10;
 let randomNumber = Math.floor(Math.random() * 100) + 1;
 ```
 Con este código, se redondea el resultado decimal con la clase `.floor` y dado que `Math.random * 100` genera un número del 0 al 99, adicionando un 1 al resultado, obtendríamos un número entero del 1 al 100.
+
+## `3.` El número de intentos no era 10.
+El código en realidad permitía solamente cinco intentos, por lo que se hizo el ajuste correspondiente.
+```javascript
+// Antes
+const ATTEMPS = 5;
+// Ahora
+const ATTEMPS = 10;
+```

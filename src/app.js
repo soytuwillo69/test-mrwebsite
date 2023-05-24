@@ -1,9 +1,9 @@
+// Se genera el numero random de 1 a 100.
 let randomNumber = Math.floor(Math.random() * 100) + 1;
 console.log(randomNumber);
 
-
-const ATTEMPS = 5;
-
+const ATTEMPS = 10;
+console.log(ATTEMPS);
 
 const guesses = document.querySelector('.guesses');
 const lastResult = document.querySelector('.lastResult');
