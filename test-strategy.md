@@ -1,8 +1,19 @@
 # Estrategia de prueba.
 
-## `1.` El código HTML, CSS y JS estaban en el mismo archivo (.html). 
-Separé el código poniendo cada tecnología en un directorio correspondiente (`src/style.css` y `src/app.js`) con la intención de tener la estructura, los estilos y la lógica de la app de forma separada para agilizar futuros cambios.
-
+## `1.` El código JavaScript no estaba en la posición correcta dentro de HTML. 
+Se colocó en la posición incorrecta. Lo siguiente no era un problema como tal, pero separé el código de cada tecnología en un directorio diferente (`index.html`, `src/style.css` y `src/app.js`) con la intención de tener la estructura, los estilos y la lógica de la app de forma separada para agilizar mis futuros cambios. 
+```html
+<!-- Antes -->
+</body>
+<script>
+    // Código JS
+</script>
+```
+```html
+<!-- Ahora -->
+<script type="text/javascript" src="./src/app.js"></script>
+</body>
+```
 ## `2.` No se generaba un número entero del 1 al 100.
 El código en realidad generaba un número en el rango de 0 a 10, comprendiendo números decimales.
 ```javascript
