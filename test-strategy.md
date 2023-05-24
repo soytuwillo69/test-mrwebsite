@@ -21,3 +21,11 @@ const ATTEMPS = 5;
 // Ahora
 const ATTEMPS = 10;
 ```
+## `4.` El input permitía ingresar también letras.
+Se pretende que el usuario digite un número entero del 1 al 100, pero también se debe validar que lo que se ingresa el usuario es un número como tal, entonces cambié el tipo del input de `text` a `number`.
+```html
+<!-- Antes -->
+<input type="number" id="guessField" class="guessField">
+<!-- Ahora -->
+<input type="number" id="guessField" class="guessField">
+```
