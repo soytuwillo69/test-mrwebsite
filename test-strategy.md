@@ -5,10 +5,10 @@ Separé el código poniendo cada tecnología en un directorio correspondiente (`
 
 ## `2.` No se generaba un número entero del 1 al 100.
 El código en realidad generaba un número en el rango de 0 a 10, comprendiendo números decimales.
-```
+```javascript
 // Antes
 let randomNumber = Math.random() * 10;
 // Ahora
 let randomNumber = Math.floor(Math.random() * 100) + 1;
 ```
-Con este código, se redondea el resultado decimal con la clase .floor y dado que Math.random * 100 genera un número del 0 al 99, adicionando un 1 al resultado, obtendríamos un número natural del 1 al 100, tal y como lo solicitan en el requerimiento.
+Con este código, se redondea el resultado decimal con la clase `.floor` y dado que `Math.random * 100` genera un número del 0 al 99, adicionando un 1 al resultado, obtendríamos un número entero del 1 al 100.
