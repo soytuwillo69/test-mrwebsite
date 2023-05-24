@@ -1,6 +1,10 @@
-let randomNumber = Math.random() * 10;
+let randomNumber = Math.floor(Math.random() * 100) + 1;
+console.log(randomNumber);
+
 
 const ATTEMPS = 5;
+
+
 const guesses = document.querySelector('.guesses');
 const lastResult = document.querySelector('.lastResult');
 const lowOrHi = document.querySelector('lowOrHi');
