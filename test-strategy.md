@@ -91,13 +91,11 @@ function isLowOrHi(userGuess){
 }
 ```
 
-3. De modo que si el número digitado por el usuario es diferente al número random generado, se muestra la información del intento anterior. Caso contrario, se mostraa el mensaje de éxito y se habilita el botón para empezar un nuevo juego.
+3. De modo que si el número digitado por el usuario es diferente al número random generado, se muestra la información del intento anterior. Caso contrario, se muestra el mensaje de éxito y se habilita el botón para empezar un nuevo juego.
 ```javascript
     if (userGuess != randomNumber) {
         showPreviousNumber(userGuess);
         isLowOrHi(userGuess);
-        guessCount++;
-        guessField.focus();
     }else{
         lastResult.textContent = '¡Felicitaciones! (SÍ adivinaste el número)';
         lastResult.style.backgroundColor = 'green';

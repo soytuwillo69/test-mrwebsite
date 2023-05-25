@@ -24,8 +24,6 @@ function checkGuess() {
     if (userGuess != randomNumber) {
         showPreviousNumber(userGuess);
         isLowOrHi(userGuess);
-        guessCount++;
-        guessField.focus();
     }else{
         lastResult.textContent = '¡Felicitaciones! (SÍ adivinaste el número)';
         lastResult.style.backgroundColor = 'green';
@@ -37,6 +35,8 @@ function checkGuess() {
         lastResult.style.backgroundColor = 'red';
         setGameOver();
     }
+    guessCount++;
+    guessField.focus();
 }
 
 function isValidNumber(userGuess){
