@@ -34,4 +34,15 @@ body {
 
 label, input{
     margin: 4px;
+    text-align: center;
+}
+
+.guessSubmit{
+    background-color: rgb(43, 94, 204);
+    color: white;
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+    user-select: none;
+    font-size: medium;
 }

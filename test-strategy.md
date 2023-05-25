@@ -55,13 +55,15 @@ Cambié el tipo del input de `text` a `number`. También agregué propiedades pa
 ```
 
 ## `-` A nivel de JavaScript, NO se validaba el número ingresado por el usuario.
-Dentro de la función `checkGuess`, antes de hacer el resto de lógica necesaria, validé que sea un número entero comprendido del 1 al 100 a través de la siguiente función. De esta forma puedo alertar al usuario y NO aumentar el contador de intentos.
+1. Implementé una función
 ```javascript
 function isValidNumber(userGuess){
     return userGuess >= 1 && userGuess <= 100;
 }
-
-// Dentro de la funcion checkGuess
+```
+2. Ahora puedo alertar al usuario y NO aumentar el contador de intentos. Tampoco se hace el resto de validaciones.
+```javascript
+// Dentro de la funcion @checkGuess
     if(!isValidNumber(userGuess)){
         return alert('Debes ingresar un número válido comprendido del 1 al 100');
     }
@@ -78,7 +80,7 @@ function showPreviousNumber(userGuess){
 }
 ```
 
-2. Implementé una función para mostrar si el número es mayor o menor, 
+2. Implementé una función para mostrar si el número digitado por el usuario es mayor o menor al número random generado.
 ```javascript
 function isLowOrHi(userGuess){
     if (userGuess < randomNumber) {
@@ -103,5 +105,5 @@ function isLowOrHi(userGuess){
     }
 ```
 
-Y de esta forma logré cubrir todos los requerimientos especificados en el [repositorio]('https://github.com/soytuwillo69/test-mrwebsite')
+Y de esta forma logré cubrir todos los requerimientos especificados en el [repositorio]('https://github.com/soytuwillo69/test-mrwebsite'). También agregué ligeros cambios en los estilos, como el centrado de texto y color del Botón.
 
