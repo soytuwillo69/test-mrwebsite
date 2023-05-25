@@ -1,7 +1,7 @@
-# Estrategia de prueba.
+# Resumen de los cambios realizados.
 
 ## `-` El código JavaScript no estaba en la posición correcta dentro del HTML. 
-Por ende, hice el cambio respectivo. También separé el código de cada tecnología en un directorio diferente (`index.html`, `src/style.css` y `src/app.js`) con la intención de tener la estructura, los estilos y la lógica de la app de forma separada para agilizar mis futuros cambios. 
+Hice el cambio respectivo. También separé el código de cada tecnología en un directorio diferente (`index.html`, `src/style.css` y `src/app.js`) con la intención de tener la estructura, los estilos y la lógica de la app de forma separada para agilizar mis futuros cambios. 
 ```html
 <!-- Antes -->
 </body>
@@ -23,12 +23,26 @@ let randomNumber = Math.floor(Math.random() * 100) + 1;
 ```
 
 ## `-` El número de intentos no era 10.
-El código permitía solamente cinco intentos, por lo que hice el ajuste correspondiente al inicializar esa variable.
+1. El código permitía solamente cinco intentos, por lo que hice el ajuste correspondiente al inicializar esa variable.
 ```javascript
 // Antes
 const ATTEMPS = 5;
 // Ahora
 const ATTEMPS = 10;
+```
+2. La variable en sí no se utilizaba, por lo que implementé una función para validar si aún quedan intentos disponibles, caso contrario mostrar que el usuario ha perdido.
+```javascript
+function triesLeft(){
+    return guessCount < ATTEMPS;
+}
+```
+De modo que después de validar el número como tal, evalúo si aun quedan intentos con un condicional.
+```javascript
+    if(!triesLeft()){
+        lastResult.textContent = '¡Perdiste! (NO adivinaste el número)';
+        lastResult.style.backgroundColor = 'red';
+        setGameOver();
+    }
 ```
 
 ## `-` El input permitía ingresar también letras.
@@ -88,4 +102,6 @@ function isLowOrHi(userGuess){
         setGameOver();
     }
 ```
+
+Y de esta forma logré cubrir todos los requerimientos especificados en el [repositorio]('https://github.com/soytuwillo69/test-mrwebsite')
 

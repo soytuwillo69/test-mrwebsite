@@ -44,7 +44,7 @@ function isValidNumber(userGuess){
 }
 
 function triesLeft(){
-    return guessCount < 10;
+    return guessCount < ATTEMPS;
 }
 
 function isLowOrHi(userGuess){
