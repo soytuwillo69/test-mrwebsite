@@ -2,6 +2,7 @@
 
 ## `-` El código JavaScript no estaba en la posición correcta dentro de HTML. 
 Por ende, hice el cambio respectivo. También separé el código de cada tecnología en un directorio diferente (`index.html`, `src/style.css` y `src/app.js`) con la intención de tener la estructura, los estilos y la lógica de la app de forma separada para agilizar mis futuros cambios. 
+```html
 <!-- Antes -->
 </body>
 <script> // Codigo JS </script>
