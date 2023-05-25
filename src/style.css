@@ -1,0 +1,52 @@
+html {
+    font-family: sans-serif;
+}
+
+body {
+    width: 50%;
+    max-width: 800px;
+    min-width: 480px;
+    margin: 0 auto;
+}
+
+.lastResult{
+    background-color: white;
+    padding: 3px;
+    text-align: center;
+}
+
+.alerts{
+    margin-top: 8px;
+    display: flex;
+    justify-content: space-evenly;
+    background-color: white;
+}
+
+.instructions, .title{
+    text-align: center;
+}
+
+.form{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+label, input{
+    margin: 4px;
+    text-align: center;
+}
+
+.guessSubmit, .resetBtn{
+    background-color: rgb(43, 94, 204);
+    color: white;
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+    user-select: none;
+    font-size: medium;
+}
+
+.resetBtn{
+    background-color: rgb(133, 2, 2);
+}
