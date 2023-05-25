@@ -1,6 +1,6 @@
 # Estrategia de prueba.
 
-## `-` El código JavaScript no estaba en la posición correcta dentro de HTML. 
+## `-` El código JavaScript no estaba en la posición correcta dentro del HTML. 
 Por ende, hice el cambio respectivo. También separé el código de cada tecnología en un directorio diferente (`index.html`, `src/style.css` y `src/app.js`) con la intención de tener la estructura, los estilos y la lógica de la app de forma separada para agilizar mis futuros cambios. 
 ```html
 <!-- Antes -->
@@ -41,18 +41,51 @@ Cambié el tipo del input de `text` a `number`. También agregué propiedades pa
 ```
 
 ## `-` A nivel de JavaScript, NO se validaba el número ingresado por el usuario.
-Dentro de la función `checkGuess`, antes de hacer el resto de lógica necesaria, primero validé que sea un número entero comprendido del 1 al 100 a través de la siguiente función.
+Dentro de la función `checkGuess`, antes de hacer el resto de lógica necesaria, validé que sea un número entero comprendido del 1 al 100 a través de la siguiente función. De esta forma puedo alertar al usuario y NO aumentar el contador de intentos.
 ```javascript
 function isValidNumber(userGuess){
     return userGuess >= 1 && userGuess <= 100;
 }
+
+// Dentro de la funcion checkGuess
+    if(!isValidNumber(userGuess)){
+        return alert('Debes ingresar un número válido comprendido del 1 al 100');
+    }
 ```
 
-## `-` La función `setGameOver()` se invocaba de forma incorrecta.
-Implementé una función que valida si quedan intentos disponibles, de NO ser así entonces se invoca la función `setGameOver` que básicamente permite reanudar el juego. Esto me permitió ahorrarme líneas de código y hacer el mismo más legible.
+## `-` Errores en las validaciones.
+Reformulé la estructura de las validaciones, cuando el usuario no "adivina" el número.
+
+1. Implementé una función para mostrar el No. de intento y el número ingresado anteriormente.
 ```javascript
-function triesLeft(){
-    return guessCount <=10;
+function showPreviousNumber(userGuess){
+    guesses.textContent = 'Número anterior: ' + userGuess;
+    tries.textContent = 'Intento: ' + guessCount;
 }
+```
+
+2. Implementé una función para mostrar si el número es mayor o menor, 
+```javascript
+function isLowOrHi(userGuess){
+    if (userGuess < randomNumber) {
+        lastResult.textContent += '(El número es mayor)';
+    } else if (userGuess > randomNumber) {
+        lastResult.textContent += '(El número es menor)';
+    }
+}
+```
+
+3. De modo que si el número digitado por el usuario es diferente al número random generado, se muestra la información del intento anterior. Caso contrario, se mostraa el mensaje de éxito y se habilita el botón para empezar un nuevo juego.
+```javascript
+    if (userGuess != randomNumber) {
+        showPreviousNumber(userGuess);
+        isLowOrHi(userGuess);
+        guessCount++;
+        guessField.focus();
+    }else{
+        lastResult.textContent = '¡Felicitaciones! (SÍ adivinaste el número)';
+        lastResult.style.backgroundColor = 'green';
+        setGameOver();
+    }
 ```
 
